@@ -6,6 +6,7 @@ from logging import getLogger
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.statusmessages.interfaces import IStatusMessage
+from plone.i18n.normalizer.interfaces import IURLNormalizer
 from urllib import urlopen as url
 from zope.interface import Interface
 import json
@@ -76,7 +77,9 @@ class DocImport(grok.View):
                 + '/view')
 
     def createObject(self, title):
-        new_id = self.context.invokeFactory('File', title)
+        nid = queryUtility(IURLNormalizer).normalize(title)
+
+        new_id = self.context.invokeFactory('File', nid)
         return self.context[new_id]
 
     def getUser(self, email):
