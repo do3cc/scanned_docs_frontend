@@ -33,15 +33,6 @@
       name="scanned_docs_frontend"
       />
 
-  <!-- 
-    Load template overrides using z3c.jbot 
-  -->
-  <include package="z3c.jbot" file="meta.zcml" />
-
-  <browser:jbot
-      directory="templates"
-      layer=".interfaces.IAddonSpecific" />
-
   <browser:page
       name="scanned_docs_controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
