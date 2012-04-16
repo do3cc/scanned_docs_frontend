@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="scanned_docs_frontend"
+     interface="scanned_docs_frontend.interfaces.IAddonSpecific"
+     />
+</layers>

@@ -1,0 +1,8 @@
+<registry>
+
+    <records interface="scanned_docs_frontend.registry.IScannedDocsFrontend">
+        <value key="list_service">http://localhost:6547/doc?page=%(page)i&amp;filter=%(filter)s</value>
+        <value key="doc_service">http://localhost:6547/doc?id=%(id)s</value>
+    </records>
+
+</registry>

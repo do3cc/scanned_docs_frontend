@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone.z3cform"
+      metal:use-macro="context/main_template/macros/master">
+
+    <body metal:fill-slot="content-core">
+        <h3 i18n:translate="">Importe</h3>
+        <div tal:define="batch view/results">
+            <form action="docimport" method="post">
+                <input type="text" name="filter" id="searchfilter" tal:attributes="value view/filter" />
+                <input type="submit" name="submit" value="Filtern" i18n:attributes="value" />
+            </form>
+            <div tal:condition="batch">
+                <ul>
+                    <li tal:repeat="result batch">
+                        <a href="#" class="action" 
+                            tal:attributes="href string:${here/absolute_url}/docimport?id=${result/id}"
+                            i18n:translate="">Import here</a>
+                        <span tal:replace="result/title" />
+                    </li>
+                </ul>
+                <div metal:use-macro="  here/batch_macros/macros/navigation" />        
+                <p i18n:translate="">
+                    Gesamtergebnisse: <span tal:replace="view/totals" />
+                </p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            jq(function(){
+            });
+        </script>
+    </body>
+</html>
