@@ -66,8 +66,10 @@ class DocImport(grok.View):
         new_ob.setTitle(data['title'])
         new_ob.setFile(url(data['resource_url']).read())
         new_ob.setFilename(data['filename'].encode('utf-8'))
-        for (group, roles) in json.loads(data['local_roles']).items():
-            new_ob.manage_setLocalRoles(group, roles)
+        local_roles = json.loads(data['local_roles'])
+        if len(local_roles):
+            for (group, roles) in local_roles.items():
+                new_ob.manage_setLocalRoles(group, roles)
         new_ob.changeOwnership(user)
         new_ob.setCreators(tuple(user.getUserId()))
         return self.request.response.redirect(new_ob.absolute_url()
