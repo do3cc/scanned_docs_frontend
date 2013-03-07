@@ -17,7 +17,7 @@ from plone.app.layout.viewlets.interfaces import IPortalFooter
 # Local imports
 from scanned_docs_frontend.interfaces import IAddonSpecific, IThemeSpecific
 
-grok.templatedir("templates")
+#grok.templatedir("templates")
 grok.layer(IAddonSpecific)
 
 # By default, set context to zope.interface.Interface
